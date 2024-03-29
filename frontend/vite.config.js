@@ -8,7 +8,7 @@ export default defineConfig({
 		port: 3000,
 		proxy: {
 			"/api": {
-				target: "https://lets-chat-lime.vercel.app",
+				target: "https://lets-chat-1.netlify.app",
 			},
 		},
 	},

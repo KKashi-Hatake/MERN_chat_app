@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) {
-			const socket = io("https://lets-chat-lime.vercel.app/", {
+			const socket = io("https://lets-chat-1.netlify.app", {
 				query: {
 					userId: authUser._id,
 				},
