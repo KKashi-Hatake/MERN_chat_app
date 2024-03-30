@@ -10,7 +10,7 @@ import userRoutes from "./routes/user.routes.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
-import { METHODS } from "http";
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -23,7 +23,7 @@ app.use(cookieParser()); // to read coookies on the server side
 app.use(
   cors({
     origin: process.env.ORIGIN,
-    METHODS: ["POST", "GET"],
+    methods: ["POST", "GET"],
     credentials: true,
     allowedHeaders: "Content-Type,Authorization, X-Auth-Token, Origin",
   })
