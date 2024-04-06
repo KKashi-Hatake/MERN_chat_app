@@ -10,16 +10,14 @@ const useLogin = () => {
 		const success = handleInputErrors(username, password);
 		if (!success) return;
 		setLoading(true);
-		console.log(username, password);
 		try {
-			const res = await fetch("https://lets-chat-app-backend.vercel.app/api/auth/login", {
+			const res = await fetch("/api/auth/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username, password }),
 			});
 
 			const data = await res.json();
-			console.log(data);
 			if (data.error) {
 				throw new Error(data.error);
 			}
