@@ -2,7 +2,7 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import cors from "cors";
+
 
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
@@ -20,14 +20,7 @@ const __dirname = path.resolve();
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser()); // to read coookies on the server side
-app.use(
-  cors({
-    origin: process.env.ORIGIN,
-    methods: ["POST", "GET"],
-    credentials: true,
-    allowedHeaders: "Content-Type,Authorization, X-Auth-Token, Origin",
-  })
-);
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
@@ -39,9 +32,7 @@ app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
-app.get("/", (_, res) => {
-  res.send("Working properly ;)");
-});
+
 
 server.listen(PORT, () => {
   connectToMongoDB();
